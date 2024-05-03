@@ -45,7 +45,6 @@ const Corpo = (props) => {
 export default Corpo
 
 const Main = styled.main`
-    position: relative;
     background-color: aliceblue;
     height: 280px;
     width: 350px;

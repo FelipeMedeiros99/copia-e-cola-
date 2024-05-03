@@ -9,13 +9,31 @@ import './estilos/reset.css'
 
 
 const App = () => {
-  const [titulos, setTitulos] = useState(JSON.parse(localStorage.titulos))
+  const [dadosLocalStorage, setDadosLocalStorage] = useState(localStorage)
+  const [titulos, setTitulos] = useState([])
   const [indicePaginaAtiva, setIndicePaginaAtiva] = useState(0)
+
+
+  
+  useEffect(()=>{
+  
+    if (localStorage.titulos!==undefined){
+      console.log('titulos alterados')
+      setTitulos(JSON.parse(localStorage.titulos))
+    }
+  }, [dadosLocalStorage])
+
+  useEffect(()=>{
+    localStorage.setItem('titulos', JSON.stringify(titulos))
+    setDadosLocalStorage(localStorage)
+  }, [titulos])
 
   const verificarSeDadosEstaoSalvosNoLocalStorage = () => {
     if(localStorage.titulos===undefined){
       localStorage.setItem('titulos', '[]')
+      
     }
+    
     titulos.map((titulo) => {
       if (localStorage[titulo] === undefined) {
         localStorage.setItem(titulo, '[]')
@@ -26,9 +44,10 @@ const App = () => {
   verificarSeDadosEstaoSalvosNoLocalStorage()
 
   return (
-    <div>
+    <Main>
       <BarraDeNavegacao
         titulos={titulos}
+        setTitulos={setTitulos}
         setIndicePaginaAtiva={setIndicePaginaAtiva}
       />
 
@@ -44,10 +63,15 @@ const App = () => {
           <button>Renomear</button>
       </Botoes>
 
-    </div>
+    </Main>
 
   )
 }
+
+const Main = styled.div`
+  width: 350px;
+  position: relative;
+`
 
 const Botoes = styled.div`
     display:  flex;

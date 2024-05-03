@@ -1,29 +1,49 @@
+import { useState } from 'react'
 import styled from 'styled-components'
+
+import TelaAdicionarCategoria from './TelaAdicionarCategoria'
 
 
 const BarraDeNavegacao = (props) =>{
     const {
         titulos,
+        setTitulos,
         setIndicePaginaAtiva,
     } = props
 
+    const [visibilidadeTelaDeAdicaoDeCategorias, setVisibilidadeTelaDeAdicaoDeCategorias] = useState(false)
+
+    const adicionarCategoria = () =>{
+        setVisibilidadeTelaDeAdicaoDeCategorias(true)
+    }
+
 
     return (
-       titulos !== undefined?
-        (   
+        <>
             <Ul className="barra-de-navegacao">
                 {titulos.map((titulo, index) => (
                     <li onClick={()=>setIndicePaginaAtiva(index)} key={index}>{titulo}</li>
                 ))}
+                <ion-icon onClick={adicionarCategoria} name="create-outline"></ion-icon>
             </Ul>  
-        ):(<></>)
+
+            {visibilidadeTelaDeAdicaoDeCategorias?
+            <TelaAdicionarCategoria 
+                titulos={titulos}
+                setTitulos={setTitulos}
+                setVisibilidadeTelaDeAdicaoDeCategorias={setVisibilidadeTelaDeAdicaoDeCategorias}/>:
+            <></>
+            }
+        </>
     )
 }
 
 
 const Ul = styled.ul`
     display: flex;
-    
+    width: 100%;
+    justify-content: right;
+
     li{
         display: inherit;
         text-align: center;
