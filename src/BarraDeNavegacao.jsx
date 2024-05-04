@@ -9,6 +9,7 @@ const BarraDeNavegacao = (props) =>{
         titulos,
         setTitulos,
         setIndicePaginaAtiva,
+        setDadosLocalStorage
     } = props
 
     const [visibilidadeTelaDeAdicaoDeCategorias, setVisibilidadeTelaDeAdicaoDeCategorias] = useState(false)
@@ -29,6 +30,8 @@ const BarraDeNavegacao = (props) =>{
 
             {visibilidadeTelaDeAdicaoDeCategorias?
             <TelaAdicionarCategoria 
+                setIndicePaginaAtiva={setIndicePaginaAtiva}
+                setDadosLocalStorage={setDadosLocalStorage}
                 titulos={titulos}
                 setTitulos={setTitulos}
                 setVisibilidadeTelaDeAdicaoDeCategorias={setVisibilidadeTelaDeAdicaoDeCategorias}/>:

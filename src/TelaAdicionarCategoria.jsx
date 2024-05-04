@@ -4,6 +4,8 @@ import { useState } from 'react'
 const TelaAdicionarCategoria = (props) => {
 
     const {
+        setIndicePaginaAtiva,
+        setDadosLocalStorage,
         setTitulos,
         setVisibilidadeTelaDeAdicaoDeCategorias,
         titulos,
@@ -42,18 +44,38 @@ const TelaAdicionarCategoria = (props) => {
                 </div>
 
             ))}
-            
-            <ion-icon onClick={()=>{
-                        let copia = [...inputCategoria]
-                        copia.push('')
-                        setInputCategoria([...copia])
-                    }} name="add-circle-outline"></ion-icon>
+
+            <ion-icon
+                onClick={() => {
+                    let copia = [...inputCategoria]
+                    copia.push('')
+                    setInputCategoria([...copia])
+                }}
+                name="add-circle-outline"></ion-icon>
 
             <Botoes>
-                <button onClick={() => {
-                    setVisibilidadeTelaDeAdicaoDeCategorias(false)
-                    setTitulos(JSON.parse(JSON.stringify(inputCategoria)))
-                }}>
+                <button
+                    onClick={() => {
+                        let copiaInputs = []
+                        let elementoRepetido = false
+                            for (let i = 0; i < inputCategoria.length; i++) {
+                                elementoRepetido = false
+                                if (copiaInputs.indexOf(inputCategoria[i])!==-1){
+                                    elementoRepetido=true
+                                }
+                                if (!elementoRepetido) {
+                                    copiaInputs.push(inputCategoria[i])
+                                }
+
+                            }
+
+                        setVisibilidadeTelaDeAdicaoDeCategorias(false)
+                        setTitulos(JSON.parse(JSON.stringify(copiaInputs)))
+                        localStorage.setItem('titulos', JSON.stringify(inputCategoria))
+                        setDadosLocalStorage(localStorage)
+                        setIndicePaginaAtiva(0)
+                    }
+                    }>
                     Salvar
                 </button>
 

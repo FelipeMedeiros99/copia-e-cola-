@@ -18,7 +18,6 @@ const App = () => {
   useEffect(()=>{
   
     if (localStorage.titulos!==undefined){
-      console.log('titulos alterados')
       setTitulos(JSON.parse(localStorage.titulos))
     }
   }, [dadosLocalStorage])
@@ -31,7 +30,6 @@ const App = () => {
   const verificarSeDadosEstaoSalvosNoLocalStorage = () => {
     if(localStorage.titulos===undefined){
       localStorage.setItem('titulos', '[]')
-      
     }
     
     titulos.map((titulo) => {
@@ -46,23 +44,20 @@ const App = () => {
   return (
     <Main>
       <BarraDeNavegacao
+        setDadosLocalStorage={setDadosLocalStorage}
         titulos={titulos}
         setTitulos={setTitulos}
         setIndicePaginaAtiva={setIndicePaginaAtiva}
       />
 
       <Corpo 
+        dadosLocalStorage={dadosLocalStorage}
+        setDadosLocalStorage={setDadosLocalStorage}
         titulos={titulos}
         indicePaginaAtiva={indicePaginaAtiva}
 
       />
-
-      <Botoes>
-          <button>Adicionar</button>
-          <button>Remover</button>
-          <button>Renomear</button>
-      </Botoes>
-
+  
     </Main>
 
   )
