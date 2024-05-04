@@ -1,0 +1,21 @@
+button{
+    height: 20px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    background-color: rgb(233, 233, 233);
+}
+
+*::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+}
+
+
+*::-webkit-scrollbar-thumb {
+background: rgba(136, 136, 136, 0.212); /* cor do indicador da barra de rolagem */
+border-radius: 5px; /* borda arredondada do indicador */
+cursor: pointer;
+}

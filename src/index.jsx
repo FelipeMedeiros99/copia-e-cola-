@@ -6,6 +6,7 @@ import BarraDeNavegacao from "./BarraDeNavegacao";
 import Corpo from "./Corpo";
 
 import './estilos/reset.css'
+import './estilos/estilo.css'
 
 
 const App = () => {

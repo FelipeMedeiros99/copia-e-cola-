@@ -44,15 +44,25 @@ const BarraDeNavegacao = (props) =>{
 
 const Ul = styled.ul`
     display: flex;
-    width: 100%;
-    justify-content: right;
+    align-items: center;
+    width: 300px;
+    height: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden; 
 
     li{
+        width: auto;
+        white-space: nowrap;
         display: inherit;
+        padding: 0 5px 0 5px;
         text-align: center;
         align-items: center;
         justify-content: center;
-        width: 100px;
+    }
+
+    ion-icon{
+        min-width: 15px;
+
     }
 
     li:hover{
