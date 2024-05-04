@@ -78,7 +78,7 @@ const Corpo = (props) => {
                     <Botoes>
                         <button
                             onClick={()=>{
-                                // setVisibilidadeInput(false)
+                                setVisibilidadeInput(false)
                                 let copiaTextos = [...textos]
                                 if(inputDeNovoTexto.length>0){
                                     copiaTextos.push(inputDeNovoTexto)
