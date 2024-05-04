@@ -12,7 +12,7 @@ const TelaAdicionarCategoria = (props) => {
     } = props
 
     const [inputCategoria, setInputCategoria] = useState(JSON.parse(JSON.stringify(titulos)))
-
+    const [copiaTitulos, setCopiaTitulos] = useState(JSON.parse(JSON.stringify(titulos)))
 
     const fecharTela = () => {
         setVisibilidadeTelaDeAdicaoDeCategorias(false)
@@ -56,6 +56,7 @@ const TelaAdicionarCategoria = (props) => {
             <Botoes>
                 <button
                     onClick={() => {
+    
                         let copiaInputs = []
                         let elementoRepetido = false
                             for (let i = 0; i < inputCategoria.length; i++) {
@@ -72,8 +73,13 @@ const TelaAdicionarCategoria = (props) => {
                         setVisibilidadeTelaDeAdicaoDeCategorias(false)
                         setTitulos(JSON.parse(JSON.stringify(copiaInputs)))
                         localStorage.setItem('titulos', JSON.stringify(inputCategoria))
+                        
+
+                        for(let i=0; i<copiaTitulos.length; i++){
+                            localStorage.setItem(inputCategoria[i], localStorage[copiaTitulos[i]])   
+                        }
+
                         setDadosLocalStorage(localStorage)
-                        setIndicePaginaAtiva(0)
                     }
                     }>
                     Salvar

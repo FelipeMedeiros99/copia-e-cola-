@@ -44,8 +44,9 @@ const BarraDeNavegacao = (props) =>{
 
 const Ul = styled.ul`
     display: flex;
+    position: relative;
     align-items: center;
-    width: 300px;
+    width: 285px;
     height: 30px;
     overflow-x: scroll;
     overflow-y: hidden; 
@@ -61,6 +62,8 @@ const Ul = styled.ul`
     }
 
     ion-icon{
+        position: fixed;
+        left: 285px;
         min-width: 15px;
 
     }
