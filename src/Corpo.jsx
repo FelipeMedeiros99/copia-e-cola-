@@ -186,7 +186,7 @@ const Textos = styled.div`
 const Container = styled.div`
     display: flex;
     position: relative;
-    padding: 0 20px 10px 25px;
+    padding: 0 20px 10px 10px;
     justify-content: space-between;
     align-items: center;
     /* width: 300px;    */
