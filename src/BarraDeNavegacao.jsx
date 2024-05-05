@@ -24,7 +24,11 @@ const BarraDeNavegacao = (props) =>{
         <Div>
             <Ul className="barra-de-navegacao">
                 {titulos.map((titulo, index) => (
+                    <>
                     <li className={index===indicePaginaAtiva?'selecionado':''} onClick={()=>setIndicePaginaAtiva(index)} key={index}>{titulo}</li>
+                    <p>|</p>
+                    </>
+                    
                 ))}
                 
             </Ul>  
@@ -65,7 +69,7 @@ const Icone= styled.div`
         top: 0;
         right: 0;
         font-size: 30px;
-        background-color: rgb(228, 228, 228);
+        background-color: rgb(255, 255, 255);
 }
 `
 
@@ -73,15 +77,12 @@ const Ul = styled.ul`
     display: flex;
     position: relative;
     align-items: center;
-    width: 271px;
+    /* width: 271px; */
     height: 36px;
     overflow-y: hidden; 
     overflow-x: scroll;
-    background-color: rgb(228, 228, 228); 
     
-    &::-webkit-scrollbar{
-        background-color: white;
-    }
+
 
     li{
         height: 100%;
@@ -92,12 +93,13 @@ const Ul = styled.ul`
         text-align: center;
         align-items: center;
         justify-content: center;
-        background-color: rgb(228, 228, 228);
     }
 
 
     .selecionado{
-        background-color: white;
+        background-color: #ebebeb;
+
+  
     }
 
     li:hover{

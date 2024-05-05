@@ -65,13 +65,11 @@ const App = () => {
 }
 
 const Main = styled.div`
-  width: 300px;
   position: relative;
 `
 
 const Botoes = styled.div`
     display:  flex;
-    width: 350px;
     bottom: 15px;
     justify-content: space-around;
 `

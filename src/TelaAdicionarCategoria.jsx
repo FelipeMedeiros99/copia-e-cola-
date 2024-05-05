@@ -111,8 +111,8 @@ const JanelaEdicao = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 303px;
-    height: 351px;
+    width: 100%;
+    height: 360px;
     z-index: 3;
     background-color: #ffffffeb;
     box-shadow: 1px 1px 2px rgb(0, 0, 0, 0.6);
@@ -125,7 +125,7 @@ const Inputs = styled.div`
     height: 240px;
     margin-bottom: 50px;
     .linha{
-        width: 300px;
+        /* width: 300px; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -145,7 +145,7 @@ const ConjuntoBotoes = styled.div`
     position: absolute;
     z-index: 4;
     bottom: 0;
-    width: 300px;
+    /* width: 300px; */
 `
 
 

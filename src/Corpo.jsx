@@ -63,8 +63,10 @@ const Corpo = (props) => {
                 </Textos>
 
                 {visibilidadeInput ?
-                    (<div className="container-novo-texto">
-
+                    (
+                
+                    <div className="container-novo-texto">
+                        <p>Insira o texto:</p>
                         <textarea 
                             
                             rows={4}
@@ -117,7 +119,7 @@ const Corpo = (props) => {
 export default Corpo
 
 const Icone = styled.div`
-    width: 300px;
+    /* width: 300px; */
     padding: 10px;
     display: flex;
     align-items: center;
@@ -139,8 +141,9 @@ const Main = styled.main`
     overflow-y: auto;
     overflow-x: hidden;
     height: 280px;
-    width: 300px;
+    /* width: 300px; */
     box-shadow: 0px 1px 2px black;
+    
     .container-novo-texto{
         position: absolute;
         top: 0;
@@ -150,8 +153,8 @@ const Main = styled.main`
         justify-content: center;
         align-items: center;
         background-color: #ffffffd5;
-        width: 302px;
-        height: 348px;
+        width: 100%;
+        height: 360px;
     }
 
     textarea{
@@ -170,13 +173,13 @@ const Container = styled.div`
     padding: 0 20px 10px 10px;
     justify-content: space-between;
     align-items: center;
-    width: 300px;   
+    /* width: 300px;    */
     height: 100px;
     box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
     margin-bottom: 10px;
     p{
         padding: 10px;
-        width: 170px;
+        /* width: 170px; */
         height: 70px;
         overflow: auto;
         box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
