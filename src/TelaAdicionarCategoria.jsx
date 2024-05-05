@@ -13,15 +13,9 @@ const TelaAdicionarCategoria = (props) => {
 
     const [inputCategoria, setInputCategoria] = useState(JSON.parse(JSON.stringify(titulos)))
     const [copiaTitulos, setCopiaTitulos] = useState(JSON.parse(JSON.stringify(titulos)))
-
-    console.log('inputs categorias: ', inputCategoria)
-
     const excluirCategoria = (index) => {
         const copia = [...inputCategoria]
-        console.log('a copia é: ', copia)
-        console.log(`apagando o elemento ${copia[index]}`)
         copia.splice(index, 1)
-        console.log('agora a copia é: ', copia)
         setInputCategoria([...copia])
 
     }

@@ -16,7 +16,6 @@ const Corpo = (props) => {
     const [inputDeNovoTexto, setInputDeNovoTexto] = useState('')
     const [visibilidadeInput, setVisibilidadeInput] = useState(false)
     const [indiceDoTexto, setIndiceDoTexto] = useState(null)
-    console.log(textos)
 
     useEffect(() => {
         if (titulos[indicePaginaAtiva] !== undefined) {
