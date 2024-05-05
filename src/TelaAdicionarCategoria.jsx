@@ -160,6 +160,9 @@ const Botoes = styled.div`
     justify-content: space-around;
     padding: 10px;
     width: 195px;
+    @media(max-width:500px){
+    min-width: 30px;
+  }
 
 `
 

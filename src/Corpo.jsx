@@ -134,7 +134,11 @@ const Botoes = styled.div`
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    width: 195px;
+    min-width: 300px;
+    @media(max-width:500px){
+        min-width: 30px;
+       
+  }
 `
 
 const Main = styled.main`

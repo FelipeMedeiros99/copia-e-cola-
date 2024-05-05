@@ -81,7 +81,10 @@ const Ul = styled.ul`
     height: 36px;
     overflow-y: hidden; 
     overflow-x: scroll;
-    
+    margin-right: 30px;
+    width: 100%;
+    min-width: 400px;
+    max-width: 500px;
 
 
     li{

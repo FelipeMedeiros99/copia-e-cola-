@@ -67,7 +67,12 @@ const App = () => {
 const Main = styled.div`
   position: relative;
   min-width: 400px;
-  max-width: 600px;
+  max-width: 500px;
+  @media(max-width:500px){
+    min-width: 300px;
+    max-width: 500px;
+  }
+
 `
 
 const Botoes = styled.div`
