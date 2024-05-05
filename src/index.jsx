@@ -66,6 +66,8 @@ const App = () => {
 
 const Main = styled.div`
   position: relative;
+  min-width: 400px;
+  max-width: 600px;
 `
 
 const Botoes = styled.div`
