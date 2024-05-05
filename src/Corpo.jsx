@@ -16,6 +16,8 @@ const Corpo = (props) => {
     const [inputDeNovoTexto, setInputDeNovoTexto] = useState('')
     const [visibilidadeInput, setVisibilidadeInput] = useState(false)
 
+    console.log(textos)
+
     useEffect(() => {
         if (titulos[indicePaginaAtiva] !== undefined) {
             setTituloPagina(titulos[indicePaginaAtiva])
@@ -58,6 +60,15 @@ const Corpo = (props) => {
                                 }
                                 }
                             >Copiar</button>
+                            
+                            <ion-icon onClick={()=>{
+                                let copiaTextos = [...textos]
+                                copiaTextos.splice(index, 1)
+                                setTextos([...copiaTextos])
+                                
+                                localStorage.setItem(tituloPagina, JSON.stringify(copiaTextos))
+
+                            }} name="trash-outline"></ion-icon>
                         </Container>
                     ))}
                 </Textos>
@@ -174,16 +185,26 @@ const Textos = styled.div`
 
 const Container = styled.div`
     display: flex;
-    padding: 0 20px 10px 10px;
+    position: relative;
+    padding: 0 20px 10px 25px;
     justify-content: space-between;
     align-items: center;
     /* width: 300px;    */
     height: 100px;
     box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
     margin-bottom: 10px;
+    
+    ion-icon{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 20px;
+    }
+
     p{
         padding: 10px;
-        max-width: 300px;
+        white-space: pre-line;
+        width: 300px;
         height: 70px;
         overflow: auto;
         box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
