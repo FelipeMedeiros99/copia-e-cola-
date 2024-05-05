@@ -183,7 +183,7 @@ const Container = styled.div`
     margin-bottom: 10px;
     p{
         padding: 10px;
-        /* width: 170px; */
+        max-width: 300px;
         height: 70px;
         overflow: auto;
         box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
