@@ -112,7 +112,7 @@ const JanelaEdicao = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 360px;
+    height: 480px;
     z-index: 3;
     background-color: #ffffffeb;
     box-shadow: 1px 1px 2px rgb(0, 0, 0, 0.6);
@@ -122,7 +122,7 @@ const Inputs = styled.div`
     padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 240px;
+    height: 350px;
     margin-bottom: 50px;
     .linha{
         /* width: 300px; */

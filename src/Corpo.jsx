@@ -144,7 +144,7 @@ const Botoes = styled.div`
 const Main = styled.main`
     overflow-y: auto;
     overflow-x: hidden;
-    height: 280px;
+    height: 400px;
     /* width: 300px; */
     box-shadow: 0px 1px 2px black;
     
