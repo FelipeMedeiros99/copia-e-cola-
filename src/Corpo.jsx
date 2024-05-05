@@ -119,6 +119,7 @@ const Corpo = (props) => {
                             <button
                                 onClick={() => {
                                     setVisibilidadeInput(false)
+                                    setIndiceDoTexto(null)
                                     setInputDeNovoTexto('')
                                 }
                                 }
