@@ -49,6 +49,7 @@ const App = () => {
         titulos={titulos}
         setTitulos={setTitulos}
         setIndicePaginaAtiva={setIndicePaginaAtiva}
+        indicePaginaAtiva={indicePaginaAtiva}
       />
 
       <Corpo 
@@ -56,7 +57,6 @@ const App = () => {
         setDadosLocalStorage={setDadosLocalStorage}
         titulos={titulos}
         indicePaginaAtiva={indicePaginaAtiva}
-
       />
   
     </Main>
@@ -65,7 +65,7 @@ const App = () => {
 }
 
 const Main = styled.div`
-  width: 350px;
+  width: 300px;
   position: relative;
 `
 

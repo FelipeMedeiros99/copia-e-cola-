@@ -26,43 +26,52 @@ const TelaAdicionarCategoria = (props) => {
     }
 
     return (
-        <Div>
-            {inputCategoria.map((titulo, index) => (
 
-                <div className="linha">
-                    <input
-                        type="text"
-                        value={inputCategoria[index]}
-                        onChange={(e) => {
-                            const conteudo = e.target.value
-                            const copiaConteudo = [...inputCategoria]
-                            copiaConteudo[index] = conteudo
-                            setInputCategoria([...copiaConteudo])
+        <JanelaEdicao>
+            
+                <Inputs>
+
+                    {inputCategoria.map((titulo, index) => (
+
+                        <div className="linha">
+                            <input
+                                type="text"
+                                value={inputCategoria[index]}
+                                onChange={(e) => {
+                                    const conteudo = e.target.value
+                                    const copiaConteudo = [...inputCategoria]
+                                    copiaConteudo[index] = conteudo
+                                    setInputCategoria([...copiaConteudo])
+                                }}
+                            />
+                            <ion-icon onClick={(index) => excluirCategoria(index)} name="trash-outline"></ion-icon>
+                        </div>
+
+                    ))}
+                </Inputs>
+
+            
+
+            <ConjuntoBotoes>
+                <Icone>
+                    <ion-icon
+                        onClick={() => {
+                            let copia = [...inputCategoria]
+                            copia.push('')
+                            setInputCategoria([...copia])
                         }}
-                    />
-                    <ion-icon onClick={(index) => excluirCategoria(index)} name="trash-outline"></ion-icon>
-                </div>
+                        name="add-circle-outline"></ion-icon>
+                </Icone>
+                <Botoes>
+                    <button
+                        onClick={() => {
 
-            ))}
-
-            <ion-icon
-                onClick={() => {
-                    let copia = [...inputCategoria]
-                    copia.push('')
-                    setInputCategoria([...copia])
-                }}
-                name="add-circle-outline"></ion-icon>
-
-            <Botoes>
-                <button
-                    onClick={() => {
-    
-                        let copiaInputs = []
-                        let elementoRepetido = false
+                            let copiaInputs = []
+                            let elementoRepetido = false
                             for (let i = 0; i < inputCategoria.length; i++) {
                                 elementoRepetido = false
-                                if (copiaInputs.indexOf(inputCategoria[i])!==-1){
-                                    elementoRepetido=true
+                                if (copiaInputs.indexOf(inputCategoria[i]) !== -1) {
+                                    elementoRepetido = true
                                 }
                                 if (!elementoRepetido) {
                                     copiaInputs.push(inputCategoria[i])
@@ -70,32 +79,34 @@ const TelaAdicionarCategoria = (props) => {
 
                             }
 
-                        setVisibilidadeTelaDeAdicaoDeCategorias(false)
-                        setTitulos(JSON.parse(JSON.stringify(copiaInputs)))
-                        localStorage.setItem('titulos', JSON.stringify(inputCategoria))
-                        
+                            setVisibilidadeTelaDeAdicaoDeCategorias(false)
+                            setTitulos(JSON.parse(JSON.stringify(copiaInputs)))
+                            localStorage.setItem('titulos', JSON.stringify(inputCategoria))
 
-                        for(let i=0; i<copiaTitulos.length; i++){
-                            localStorage.setItem(inputCategoria[i], localStorage[copiaTitulos[i]])   
+
+                            for (let i = 0; i < copiaTitulos.length; i++) {
+                                localStorage.setItem(inputCategoria[i], localStorage[copiaTitulos[i]])
+                            }
+
+                            setDadosLocalStorage(localStorage)
                         }
+                        }>
+                        Salvar
+                    </button>
 
-                        setDadosLocalStorage(localStorage)
-                    }
-                    }>
-                    Salvar
-                </button>
+                    <button onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
+                        Cancelar
+                    </button>
+                </Botoes>
+            </ConjuntoBotoes>
+        </JanelaEdicao>
 
-                <button onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
-                    Cancelar
-                </button>
-            </Botoes>
-        </Div>
     )
 }
 
-const Div = styled.div`
+const JanelaEdicao = styled.div`
     position: absolute;
-    top:0;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,14 +114,46 @@ const Div = styled.div`
     width: 303px;
     height: 351px;
     z-index: 3;
-    background-color: #ffffffed;
-
-    ion-icon{
-        margin-top: 10px;
-        font-size: 30px;
-    }
-
+    background-color: #ffffffeb;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0, 0.6);
 `
+
+const Inputs = styled.div`
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 240px;
+    margin-bottom: 50px;
+    .linha{
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        ion-icon{
+            margin-left: 10px;
+        }
+    }
+`
+
+const ConjuntoBotoes = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 4;
+    bottom: 0;
+    width: 300px;
+`
+
+
+const Icone = styled.div`
+
+    bottom: 45px;
+`
+
 
 const Botoes = styled.div`
     display: flex;

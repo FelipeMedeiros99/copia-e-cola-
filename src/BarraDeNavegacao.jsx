@@ -9,7 +9,8 @@ const BarraDeNavegacao = (props) =>{
         titulos,
         setTitulos,
         setIndicePaginaAtiva,
-        setDadosLocalStorage
+        setDadosLocalStorage,
+        indicePaginaAtiva,
     } = props
 
     const [visibilidadeTelaDeAdicaoDeCategorias, setVisibilidadeTelaDeAdicaoDeCategorias] = useState(false)
@@ -20,13 +21,18 @@ const BarraDeNavegacao = (props) =>{
 
 
     return (
-        <>
+        <Div>
             <Ul className="barra-de-navegacao">
                 {titulos.map((titulo, index) => (
-                    <li onClick={()=>setIndicePaginaAtiva(index)} key={index}>{titulo}</li>
+                    <li className={index===indicePaginaAtiva?'selecionado':''} onClick={()=>setIndicePaginaAtiva(index)} key={index}>{titulo}</li>
                 ))}
-                <ion-icon onClick={adicionarCategoria} name="create-outline"></ion-icon>
+                
             </Ul>  
+
+            
+            <Icone>
+                <ion-icon onClick={adicionarCategoria} name="create-outline"></ion-icon>
+            </Icone>
 
             {visibilidadeTelaDeAdicaoDeCategorias?
             <TelaAdicionarCategoria 
@@ -37,21 +43,48 @@ const BarraDeNavegacao = (props) =>{
                 setVisibilidadeTelaDeAdicaoDeCategorias={setVisibilidadeTelaDeAdicaoDeCategorias}/>:
             <></>
             }
-        </>
+        </Div>
+
     )
 }
 
+const Div = styled.div`
+    ion-icon{
+        top: 0;
+        right: 0;
+        min-width: 15px;
+        font-size: 30px;
+    }
+
+`
+
+
+const Icone= styled.div`
+    ion-icon{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 30px;
+        background-color: rgb(228, 228, 228);
+}
+`
 
 const Ul = styled.ul`
     display: flex;
     position: relative;
     align-items: center;
-    width: 285px;
-    height: 30px;
-    overflow-x: scroll;
+    width: 271px;
+    height: 36px;
     overflow-y: hidden; 
+    overflow-x: scroll;
+    background-color: rgb(228, 228, 228); 
+    
+    &::-webkit-scrollbar{
+        background-color: white;
+    }
 
     li{
+        height: 100%;
         width: auto;
         white-space: nowrap;
         display: inherit;
@@ -59,21 +92,16 @@ const Ul = styled.ul`
         text-align: center;
         align-items: center;
         justify-content: center;
+        background-color: rgb(228, 228, 228);
     }
 
-    ion-icon{
-        position: fixed;
-        left: 275px;
-        min-width: 15px;
-        font-size: 30px;
-    }
 
-    ion-icon:hover{
-        cursor: pointer;
+    .selecionado{
+        background-color: white;
     }
 
     li:hover{
-        background-color: #e2e2e2;
+        background-color: #c0c0c0;
         cursor: pointer;
     }
 `
