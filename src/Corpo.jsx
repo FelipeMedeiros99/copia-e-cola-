@@ -15,7 +15,7 @@ const Corpo = (props) => {
     const [textos, setTextos] = useState([])
     const [inputDeNovoTexto, setInputDeNovoTexto] = useState('')
     const [visibilidadeInput, setVisibilidadeInput] = useState(false)
-
+    const [indiceDoTexto, setIndiceDoTexto] = useState(null)
     console.log(textos)
 
     useEffect(() => {
@@ -55,20 +55,28 @@ const Corpo = (props) => {
                             <button
 
                                 onClick={()=>{
-                                    console.log(texto)
                                     navigator.clipboard.writeText(texto)
                                 }
                                 }
                             >Copiar</button>
                             
-                            <ion-icon onClick={()=>{
-                                let copiaTextos = [...textos]
-                                copiaTextos.splice(index, 1)
-                                setTextos([...copiaTextos])
-                                
-                                localStorage.setItem(tituloPagina, JSON.stringify(copiaTextos))
+                            <Icones>
+                                <ion-icon name="create-outline" onClick={()=>{
+                                    setInputDeNovoTexto(texto)
+                                    setVisibilidadeInput(true)
+                                    setIndiceDoTexto(index)
+                                }
+                                }></ion-icon>
+                                <ion-icon onClick={()=>{
+                                    let copiaTextos = [...textos]
+                                    copiaTextos.splice(index, 1)
+                                    setTextos([...copiaTextos])
+                                    
+                                    localStorage.setItem(tituloPagina, JSON.stringify(copiaTextos))
 
-                            }} name="trash-outline"></ion-icon>
+                                }} name="trash-outline"></ion-icon>
+                                
+                                </Icones>
                         </Container>
                     ))}
                 </Textos>
@@ -94,12 +102,17 @@ const Corpo = (props) => {
                                 onClick={() => {
                                     setVisibilidadeInput(false)
                                     let copiaTextos = [...textos]
-                                    if (inputDeNovoTexto.length > 0) {
-                                        copiaTextos.push(inputDeNovoTexto)
+                                    if(indiceDoTexto===null){
+                                        if (inputDeNovoTexto.length > 0) {
+                                            copiaTextos.push(inputDeNovoTexto)
+                                        }
+                                    }else{
+                                        copiaTextos[indiceDoTexto] = inputDeNovoTexto
                                     }
                                     setTextos([...copiaTextos])
                                     setInputDeNovoTexto('')
                                     localStorage.setItem(tituloPagina, JSON.stringify(textos))
+                                    setIndiceDoTexto(null)
 
                                 }}
                             >salvar</button>
@@ -128,6 +141,13 @@ const Corpo = (props) => {
 }
 
 export default Corpo
+
+const Icones = styled.div`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 20px;
+`
 
 const Icone = styled.div`
     /* width: 300px; */
@@ -194,12 +214,7 @@ const Container = styled.div`
     box-shadow: 0 1px 3px rgb(0, 0, 0, 0.7);
     margin-bottom: 10px;
     
-    ion-icon{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        font-size: 20px;
-    }
+
 
     p{
         padding: 10px;
