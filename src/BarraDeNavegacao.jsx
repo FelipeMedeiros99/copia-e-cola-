@@ -63,9 +63,13 @@ const Ul = styled.ul`
 
     ion-icon{
         position: fixed;
-        left: 285px;
+        left: 275px;
         min-width: 15px;
+        font-size: 30px;
+    }
 
+    ion-icon:hover{
+        cursor: pointer;
     }
 
     li:hover{

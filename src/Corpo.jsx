@@ -50,22 +50,32 @@ const Corpo = (props) => {
 
                         <Container>
                             <p key={index}>{texto}</p>
-                            <button>Copiar</button>
+                            <button
+
+                                onClick={()=>{
+                                    console.log(texto)
+                                    navigator.clipboard.writeText(texto)
+                                }
+                                }
+                            >Copiar</button>
                         </Container>
                     ))}
                 </Textos>
 
                 {visibilidadeInput ?
                     (<div className="container-novo-texto">
-                        <textarea
-                            rows={2}
+
+                        <textarea 
+                            
+                            rows={4}
                             cols={30}
                             value={inputDeNovoTexto}
                             onChange={(event) => {
                                 const texto = event.target.value
                                 setInputDeNovoTexto(texto)
                             }}
-                        ></textarea>
+                            ></textarea>
+
                         <Botoes>
                             <button
                                 onClick={() => {
@@ -93,12 +103,12 @@ const Corpo = (props) => {
             </Main>
 
             <Icone>
-                
                 <ion-icon
                     onClick={() => {
                         setVisibilidadeInput(true)
                     }}
                     name="add-circle-outline"></ion-icon>
+
             </Icone>
         </>
     )
@@ -119,7 +129,10 @@ const Icone = styled.div`
 `
 
 const Botoes = styled.div`
-    
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    width: 195px;
 `
 
 const Main = styled.main`
@@ -128,6 +141,23 @@ const Main = styled.main`
     height: 280px;
     width: 300px;
     box-shadow: 0px 1px 2px black;
+    .container-novo-texto{
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffffd5;
+        width: 302px;
+        height: 348px;
+    }
+
+    textarea{
+        resize:none;
+    }
+
 `
 
 const Textos = styled.div`

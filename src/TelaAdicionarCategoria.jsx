@@ -100,15 +100,24 @@ const Div = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 303px;
+    height: 351px;
     z-index: 3;
-    width: 350px;
-    height: 320px;
-    background-color: #e6e6e697;
+    background-color: #ffffffed;
+
+    ion-icon{
+        margin-top: 10px;
+        font-size: 30px;
+    }
 
 `
 
 const Botoes = styled.div`
     display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    width: 195px;
+
 `
 
 export default TelaAdicionarCategoria
