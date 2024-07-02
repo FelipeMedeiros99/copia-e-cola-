@@ -1,0 +1,28 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "copia-e-cola.vercel",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "copia-e-cola.vercel",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./icone.ico",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "id": "copia-e-cola",
+  "lang": "pt",
+  "categories": [
+    "business",
+    "social"
+  ],
+  "description": "Salva mensagens para copiar e colar."
+}
