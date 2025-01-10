@@ -53,6 +53,7 @@ const BarraDeNavegacao = (props) =>{
 }
 
 const Div = styled.div`
+    
     ion-icon{
         top: 0;
         right: 0;

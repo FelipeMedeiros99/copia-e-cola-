@@ -53,94 +53,107 @@ const Corpo = (props) => {
                             <p key={index}>{texto}</p>
                             <button
 
-                                onClick={()=>{
+                                onClick={() => {
                                     navigator.clipboard.writeText(texto)
                                 }
                                 }
                             >Copiar</button>
-                            
+
                             <Icones>
-                                <ion-icon name="create-outline" onClick={()=>{
+                                <ion-icon name="create-outline" onClick={() => {
                                     setInputDeNovoTexto(texto)
                                     setVisibilidadeInput(true)
                                     setIndiceDoTexto(index)
                                 }
                                 }></ion-icon>
-                                <ion-icon onClick={()=>{
+                                <ion-icon onClick={() => {
                                     let copiaTextos = [...textos]
                                     copiaTextos.splice(index, 1)
                                     setTextos([...copiaTextos])
-                                    
+
                                     localStorage.setItem(tituloPagina, JSON.stringify(copiaTextos))
 
                                 }} name="trash-outline"></ion-icon>
-                                
-                                </Icones>
+
+                            </Icones>
                         </Container>
                     ))}
                 </Textos>
 
                 {visibilidadeInput ?
                     (
-                
-                    <div className="container-novo-texto">
-                        <p>Insira o texto:</p>
-                        <textarea 
-                            
-                            rows={4}
-                            cols={30}
-                            value={inputDeNovoTexto}
-                            onChange={(event) => {
-                                const texto = event.target.value
-                                setInputDeNovoTexto(texto)
-                            }}
+
+                        <div className="container-novo-texto">
+                            <p>Insira o texto:</p>
+                            <textarea
+
+                                rows={4}
+                                cols={30}
+                                value={inputDeNovoTexto}
+                                onChange={(event) => {
+                                    const texto = event.target.value
+                                    setInputDeNovoTexto(texto)
+                                }}
                             ></textarea>
 
-                        <Botoes>
-                            <button
-                                onClick={() => {
-                                    setVisibilidadeInput(false)
-                                    let copiaTextos = [...textos]
-                                    if(indiceDoTexto===null){
-                                        if (inputDeNovoTexto.length > 0) {
-                                            copiaTextos.push(inputDeNovoTexto)
+                            <Botoes>
+                                <button
+                                    onClick={() => {
+                                        setVisibilidadeInput(false)
+                                        let copiaTextos = [...textos]
+                                        if (indiceDoTexto === null) {
+                                            if (inputDeNovoTexto.length > 0) {
+                                                copiaTextos.push(inputDeNovoTexto)
+                                            }
+                                        } else {
+                                            copiaTextos[indiceDoTexto] = inputDeNovoTexto
                                         }
-                                    }else{
-                                        copiaTextos[indiceDoTexto] = inputDeNovoTexto
-                                    }
-                                    setTextos([...copiaTextos])
-                                    setInputDeNovoTexto('')
-                                    localStorage.setItem(tituloPagina, JSON.stringify(textos))
-                                    setIndiceDoTexto(null)
+                                        setTextos([...copiaTextos])
+                                        setInputDeNovoTexto('')
+                                        localStorage.setItem(tituloPagina, JSON.stringify(textos))
+                                        setIndiceDoTexto(null)
 
-                                }}
-                            >salvar</button>
-                            <button
-                                onClick={() => {
-                                    setVisibilidadeInput(false)
-                                    setIndiceDoTexto(null)
-                                    setInputDeNovoTexto('')
-                                }
-                                }
-                            >cancelar</button>
-                        </Botoes>
-                    </div>) : (<></>)
+                                    }}
+                                >salvar</button>
+                                <button
+                                    onClick={() => {
+                                        setVisibilidadeInput(false)
+                                        setIndiceDoTexto(null)
+                                        setInputDeNovoTexto('')
+                                    }
+                                    }
+                                >cancelar</button>
+                            </Botoes>
+                        </div>) : (<></>)
                 }
             </Main>
 
-            <Icone>
-                <ion-icon
-                    onClick={() => {
-                        setVisibilidadeInput(true)
-                    }}
-                    name="add-circle-outline"></ion-icon>
+            <ContainerButton>
 
-            </Icone>
+                <Icone>
+                    <p >novo</p>
+                    <ion-icon
+                        onClick={() => {
+                            setVisibilidadeInput(true)
+                        }}
+                        name="add-circle-outline"></ion-icon>
+
+                </Icone>
+            </ContainerButton>
         </>
     )
 }
 
 export default Corpo
+
+const ContainerButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    color: white;
+`
 
 const Icones = styled.div`
     position: absolute;
@@ -150,11 +163,15 @@ const Icones = styled.div`
 `
 
 const Icone = styled.div`
-    /* width: 300px; */
-    padding: 10px;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: space-around;
+    background-color: #1ec2ac;
+    width: 100px;
+    border-radius: 50px;
+    font-size: 26px;
+    /* width: 300px; */
+    padding: 10px;
     ion-icon{
         font-size: 30px;
     }
@@ -173,6 +190,9 @@ const Botoes = styled.div`
 `
 
 const Main = styled.main`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow-y: auto;
     overflow-x: hidden;
     height: 400px;
