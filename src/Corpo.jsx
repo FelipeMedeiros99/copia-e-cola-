@@ -130,7 +130,7 @@ const Corpo = (props) => {
 
             <ContainerButton>
 
-                <Icone>
+                <Button>
                     <p >novo</p>
                     <ion-icon
                         onClick={() => {
@@ -138,7 +138,7 @@ const Corpo = (props) => {
                         }}
                         name="add-circle-outline"></ion-icon>
 
-                </Icone>
+                </Button>
             </ContainerButton>
         </>
     )
@@ -162,7 +162,7 @@ const Icones = styled.div`
     font-size: 20px;
 `
 
-const Icone = styled.div`
+const Button = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -172,8 +172,14 @@ const Icone = styled.div`
     font-size: 26px;
     /* width: 300px; */
     padding: 10px;
+    box-shadow: 0px 2px 7px #00000085;
     ion-icon{
         font-size: 30px;
+    }
+
+    &:hover{
+        background-color: #1bac98;
+        cursor: pointer;
     }
 
 `
