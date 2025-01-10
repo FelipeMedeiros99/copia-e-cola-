@@ -130,13 +130,9 @@ const Corpo = (props) => {
 
             <ContainerButton>
 
-                <Button>
-                    <p >novo</p>
-                    <ion-icon
-                        onClick={() => {
-                            setVisibilidadeInput(true)
-                        }}
-                        name="add-circle-outline"></ion-icon>
+                <Button onClick={() => setVisibilidadeInput(true)}>
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                    <p >Texto</p>
 
                 </Button>
             </ContainerButton>
@@ -167,7 +163,7 @@ const Button = styled.div`
     align-items: center;
     justify-content: space-around;
     background-color: #1ec2ac;
-    width: 100px;
+    width: 110px;
     border-radius: 50px;
     font-size: 26px;
     /* width: 300px; */
@@ -196,9 +192,6 @@ const Botoes = styled.div`
 `
 
 const Main = styled.main`
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow-y: auto;
     overflow-x: hidden;
     height: 400px;

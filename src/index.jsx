@@ -17,7 +17,6 @@ const App = () => {
 
   
   useEffect(()=>{
-  
     if (localStorage.titulos!==undefined){
       setTitulos(JSON.parse(localStorage.titulos))
     }
@@ -30,12 +29,12 @@ const App = () => {
 
   const verificarSeDadosEstaoSalvosNoLocalStorage = () => {
     if(localStorage.titulos===undefined){
-      localStorage.setItem('titulos', '[]')
+      localStorage.setItem('titulos', '["meus textos"]')
     }
     
     titulos.map((titulo) => {
       if (localStorage[titulo] === undefined) {
-        localStorage.setItem(titulo, '[]')
+        localStorage.setItem(titulo, '["Adicione seu texto aqui"]')
       }
     })
   }
