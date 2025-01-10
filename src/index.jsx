@@ -29,7 +29,7 @@ const App = () => {
 
   const verificarSeDadosEstaoSalvosNoLocalStorage = () => {
     if(localStorage.titulos===undefined){
-      localStorage.setItem('titulos', '["meus textos"]')
+      localStorage.setItem('titulos', '["Meus textos"]')
     }
     
     titulos.map((titulo) => {
@@ -40,7 +40,6 @@ const App = () => {
   }
 
   verificarSeDadosEstaoSalvosNoLocalStorage()
-
   return (
     <Main>
       <BarraDeNavegacao
@@ -71,6 +70,8 @@ const Main = styled.div`
     min-width: 300px;
     max-width: 500px;
   }
+  
+  box-shadow: 0px 1px 2px black;
 
 `
 

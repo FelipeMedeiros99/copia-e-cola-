@@ -30,6 +30,7 @@ const TelaAdicionarCategoria = (props) => {
 
                         <div className="linha">
                             <input
+                                key={index}
                                 type="text"
                                 value={inputCategoria[index]}
                                 onChange={(e) => {
@@ -107,9 +108,9 @@ const JanelaEdicao = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 480px;
-    z-index: 3;
-    background-color: #ffffffeb;
+    height: 540px;
+    z-index: 5;
+    background-color: #ffffff;
     box-shadow: 1px 1px 2px rgb(0, 0, 0, 0.6);
 `
 

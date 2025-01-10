@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import { FaChevronDown } from "react-icons/fa";
 
 import TelaAdicionarCategoria from './TelaAdicionarCategoria'
 
 
-const BarraDeNavegacao = (props) =>{
+const BarraDeNavegacao = (props) => {
     const {
         titulos,
         setTitulos,
@@ -13,9 +14,10 @@ const BarraDeNavegacao = (props) =>{
         indicePaginaAtiva,
     } = props
 
+    const [dropDown, setDropdow] = useState(false)
     const [visibilidadeTelaDeAdicaoDeCategorias, setVisibilidadeTelaDeAdicaoDeCategorias] = useState(false)
 
-    const adicionarCategoria = () =>{
+    const adicionarCategoria = () => {
         setVisibilidadeTelaDeAdicaoDeCategorias(true)
     }
 
@@ -23,37 +25,68 @@ const BarraDeNavegacao = (props) =>{
     return (
         <Div>
             <Ul className="barra-de-navegacao">
-                {titulos.map((titulo, index) => (
-                    <>
-                    <li className={index===indicePaginaAtiva?'selecionado':''} onClick={()=>setIndicePaginaAtiva(index)} key={index}>{titulo}</li>
-                    <p>|</p>
-                    </>
-                    
-                ))}
-                
-            </Ul>  
+                <div
+                    onMouseEnter={() => setDropdow(true)}
+                    onMouseLeave={() => setDropdow(false)} >
+                    {titulos.map((titulo, index) => {
+                        
+                            {
+                                if(dropDown){
+                                return( 
+                                <li
+                                    className={'selecionado'}
+                                    onMouseEnter={() => setIndicePaginaAtiva(index)}
+                                    onClick={() => {
+                                        setIndicePaginaAtiva(index)
+                                        setDropdow(false)
+                                    }}
+                                    key={index}>{
+                                        titulo}
+                                </li>)}
+                                
+                                return(
+                                <li
+                                    className={index === indicePaginaAtiva ? 'selecionado' : 'oculto'}
+                                    onClick={() => {
+                                        setIndicePaginaAtiva(index)
+                                        setDropdow(false)
+                                    }} key={index}>{titulo} <FaChevronDown />
+                                </li>)
+                            }
 
-            
-            <Icone>
-                <ion-icon onClick={adicionarCategoria} name="create-outline"></ion-icon>
+                    
+})}
+                </div>
+
+            </Ul>
+
+
+            <Icone onClick={() => adicionarCategoria()} >
+                <p>Editar títulos</p>
+                <ion-icon name="create-outline"></ion-icon>
             </Icone>
 
-            {visibilidadeTelaDeAdicaoDeCategorias?
-            <TelaAdicionarCategoria 
-                setIndicePaginaAtiva={setIndicePaginaAtiva}
-                setDadosLocalStorage={setDadosLocalStorage}
-                titulos={titulos}
-                setTitulos={setTitulos}
-                setVisibilidadeTelaDeAdicaoDeCategorias={setVisibilidadeTelaDeAdicaoDeCategorias}/>:
-            <></>
+            {visibilidadeTelaDeAdicaoDeCategorias ?
+                <TelaAdicionarCategoria
+                    setIndicePaginaAtiva={setIndicePaginaAtiva}
+                    setDadosLocalStorage={setDadosLocalStorage}
+                    titulos={titulos}
+                    setTitulos={setTitulos}
+                    setVisibilidadeTelaDeAdicaoDeCategorias={setVisibilidadeTelaDeAdicaoDeCategorias} /> :
+                <></>
             }
         </Div>
 
     )
 }
 
+
+// const color
+
 const Div = styled.div`
-    
+    position: relative;
+    height: 36px;
+    background-color: white;//#e1e1e1;
     ion-icon{
         top: 0;
         right: 0;
@@ -64,50 +97,76 @@ const Div = styled.div`
 `
 
 
-const Icone= styled.div`
-    ion-icon{
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 30px;
-        background-color: rgb(255, 255, 255);
-}
+const Icone = styled.div`
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 36px;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;    
+    width: 150px;
+    background-color: white;//#e1e1e1;
+    
+    border-bottom: solid 1px #00000029;
+
+    &:hover{
+        cursor: pointer;
+        background-color: #eeeeee;
+        z-index: 3;
+    }
+
 `
 
 const Ul = styled.ul`
     display: flex;
-    position: relative;
-    align-items: center;
-    /* width: 271px; */
-    height: 36px;
-    overflow-y: hidden; 
-    overflow-x: scroll;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    align-items: left;
+    height: 100%;
     margin-right: 30px;
     width: 100%;
-    min-width: 400px;
-    max-width: 500px;
-
-
-    li{
-        height: 100%;
-        width: auto;
-        white-space: nowrap;
-        display: inherit;
-        padding: 0 5px 0 5px;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
+    border-bottom: solid 1px #00000029;
+    div{
+        width: 250px;
+        z-index: 4;
     }
 
 
-    .selecionado{
-        background-color: #ebebeb;
+    li{
+        font-size: 20px;
+        background-color: white;//#e1e1e1;
+        height: 36px;
+        position: absolute;
+        width: 100%;
+        white-space: nowrap;
+        display: inherit;
+        padding: 0 5px 0 5px;
+        text-align: left;
+        align-items: center;
+        justify-content: left;
+        border-bottom: solid 1px #00000029;
+        border-right: solid 1px #00000029;
+        overflow: hidden;
+    }
 
+    li.oculto{
+        display: none;
+    }
+
+    li.selecionado{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: static;
   
     }
 
     li:hover{
-        background-color: #c0c0c0;
+        background-color: #eeeeee;
         cursor: pointer;
     }
 `

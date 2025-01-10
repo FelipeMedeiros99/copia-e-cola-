@@ -49,8 +49,8 @@ const Corpo = (props) => {
                 <Textos>
                     {textos.map((texto, index) => (
 
-                        <Container>
-                            <p key={index}>{texto}</p>
+                        <Container key={index}>
+                            <p >{texto}</p>
                             <button
 
                                 onClick={() => {
@@ -132,7 +132,7 @@ const Corpo = (props) => {
 
                 <Button onClick={() => setVisibilidadeInput(true)}>
                     <ion-icon name="add-circle-outline"></ion-icon>
-                    <p >Texto</p>
+                    <p >Novo texto</p>
 
                 </Button>
             </ContainerButton>
@@ -148,7 +148,6 @@ const ContainerButton = styled.div`
     justify-content: center;
     width: 100%;
     padding: 10px;
-    color: white;
 `
 
 const Icones = styled.div`
@@ -156,16 +155,21 @@ const Icones = styled.div`
     bottom: 0;
     right: 0;
     font-size: 20px;
+
+    ion-icon:hover{
+        cursor: pointer;
+        background-color: #dfdbdb;
+    }
 `
 
 const Button = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #1ec2ac;
-    width: 110px;
+    background-color: white;//#1ec2ac;
+    width: auto;
     border-radius: 50px;
-    font-size: 26px;
+    font-size: 19px;
     /* width: 300px; */
     padding: 10px;
     box-shadow: 0px 2px 7px #00000085;
@@ -174,7 +178,7 @@ const Button = styled.div`
     }
 
     &:hover{
-        background-color: #1bac98;
+        background-color: #dbdbdb;//#1bac98;
         cursor: pointer;
     }
 
@@ -196,7 +200,7 @@ const Main = styled.main`
     overflow-x: hidden;
     height: 400px;
     /* width: 300px; */
-    box-shadow: 0px 1px 2px black;
+    margin-top: 31px;
     
     .container-novo-texto{
         position: absolute;
@@ -225,7 +229,7 @@ const Textos = styled.div`
 const Container = styled.div`
     display: flex;
     position: relative;
-    padding: 0 20px 10px 10px;
+    padding: 0 10px 10px 10px;
     justify-content: space-between;
     align-items: center;
     /* width: 300px;    */
