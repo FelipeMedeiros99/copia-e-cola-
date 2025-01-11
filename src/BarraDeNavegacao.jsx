@@ -38,7 +38,7 @@ const BarraDeNavegacao = (props) => {
                                     onMouseEnter={() => setIndicePaginaAtiva(index)}
                                     onClick={() => {
                                         setIndicePaginaAtiva(index)
-                                        setDropdow(false)
+                                        setDropdow(!dropDown)
                                     }}
                                     key={index}>{
                                         titulo}
@@ -49,7 +49,7 @@ const BarraDeNavegacao = (props) => {
                                     className={index === indicePaginaAtiva ? 'selecionado' : 'oculto'}
                                     onClick={() => {
                                         setIndicePaginaAtiva(index)
-                                        setDropdow(false)
+                                        setDropdow(!dropDown)
                                     }} key={index}>{titulo} <FaChevronDown />
                                 </li>)
                             }
