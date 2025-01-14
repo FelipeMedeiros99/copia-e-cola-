@@ -5,7 +5,8 @@ import { FaChevronDown } from "react-icons/fa";
 import TelaAdicionarCategoria from './TelaAdicionarCategoria'
 
 
-const BarraDeNavegacao = (props) => {
+const NavBar
+ = (props) => {
     const {
         titulos,
         setTitulos,
@@ -172,4 +173,4 @@ const Ul = styled.ul`
 `
 
 
-export default BarraDeNavegacao
+export default NavBar

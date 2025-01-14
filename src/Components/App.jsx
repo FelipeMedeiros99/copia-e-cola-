@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from 'styled-components'
 
-import BarraDeNavegacao from "./BarraDeNavegacao";
-import Corpo from "./Corpo";
+import NavBar from "./NavBar";
+import Body from "./Body";
 
 
 import '../estilos/reset.css'
@@ -42,7 +42,7 @@ const App = () => {
   verificarSeDadosEstaoSalvosNoLocalStorage()
   return (
     <Main>
-      <BarraDeNavegacao
+      <NavBar
         setDadosLocalStorage={setDadosLocalStorage}
         titulos={titulos}
         setTitulos={setTitulos}
@@ -50,7 +50,7 @@ const App = () => {
         indicePaginaAtiva={indicePaginaAtiva}
       />
 
-      <Corpo 
+      <Body 
         dadosLocalStorage={dadosLocalStorage}
         setDadosLocalStorage={setDadosLocalStorage}
         titulos={titulos}

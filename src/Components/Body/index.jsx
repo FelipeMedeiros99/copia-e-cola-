@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styled from 'styled-components'
 
 
-const Corpo = (props) => {
+const Body = (props) => {
 
     const {
         dadosLocalStorage,
@@ -140,7 +140,7 @@ const Corpo = (props) => {
     )
 }
 
-export default Corpo
+export default Body
 
 const ContainerButton = styled.div`
     display: flex;
