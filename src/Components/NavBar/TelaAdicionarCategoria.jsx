@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
+import Button from '../Button'
 
 const TelaAdicionarCategoria = (props) => {
 
@@ -59,7 +60,7 @@ const TelaAdicionarCategoria = (props) => {
                         name="add-circle-outline"></ion-icon>
                 </Icone>
                 <Botoes>
-                    <button
+                    <Button
                         onClick={() => {
 
                             let copiaInputs = []
@@ -88,11 +89,11 @@ const TelaAdicionarCategoria = (props) => {
                         }
                         }>
                         Salvar
-                    </button>
+                    </Button>
 
-                    <button onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
+                    <Button onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
                         Cancelar
-                    </button>
+                    </Button>
                 </Botoes>
             </ConjuntoBotoes>
         </JanelaEdicao>
@@ -155,7 +156,7 @@ const Botoes = styled.div`
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    width: 195px;
+    width: 100%;
     @media(max-width:500px){
     min-width: 30px;
   }

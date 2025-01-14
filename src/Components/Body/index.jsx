@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from 'styled-components'
 
+import Button from "../Button"
 
 const Body = (props) => {
 
@@ -128,27 +129,16 @@ const Body = (props) => {
                 }
             </Main>
 
-            <ContainerButton>
-
                 <Button onClick={() => setVisibilidadeInput(true)}>
-                    <ion-icon name="add-circle-outline"></ion-icon>
+                    <ion-icon name="add-circle-outline" />
                     <p >Novo texto</p>
-
                 </Button>
-            </ContainerButton>
         </>
     )
 }
 
 export default Body
 
-const ContainerButton = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
-`
 
 const Icones = styled.div`
     position: absolute;
@@ -160,28 +150,6 @@ const Icones = styled.div`
         cursor: pointer;
         background-color: #dfdbdb;
     }
-`
-
-const Button = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;//#1ec2ac;
-    width: auto;
-    border-radius: 50px;
-    font-size: 19px;
-    /* width: 300px; */
-    padding: 10px;
-    box-shadow: 0px 2px 7px #00000085;
-    ion-icon{
-        font-size: 30px;
-    }
-
-    &:hover{
-        background-color: #dbdbdb;//#1bac98;
-        cursor: pointer;
-    }
-
 `
 
 const Botoes = styled.div`

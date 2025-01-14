@@ -10,12 +10,14 @@ import '../estilos/estilo.css'
 
 
 const App = () => {
+
+  // states
   const [dadosLocalStorage, setDadosLocalStorage] = useState(localStorage)
   const [titulos, setTitulos] = useState([])
   const [indicePaginaAtiva, setIndicePaginaAtiva] = useState(0)
 
 
-  
+  // effects
   useEffect(()=>{
     if (localStorage.titulos!==undefined){
       setTitulos(JSON.parse(localStorage.titulos))
@@ -27,6 +29,8 @@ const App = () => {
     setDadosLocalStorage(localStorage)
   }, [titulos])
 
+
+  // functions
   const verificarSeDadosEstaoSalvosNoLocalStorage = () => {
     if(localStorage.titulos===undefined){
       localStorage.setItem('titulos', '["Meus textos"]')
