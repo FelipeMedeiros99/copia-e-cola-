@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
-const Button = ({children, ...props})=>{
+const Button = ({children, hoverColor, ...props})=>{
+  console.log("hover color: ", hoverColor)
   return(
 
     <ContainerButton>
-      <ButtonStyle {...props}>{children}</ButtonStyle>
+      <ButtonStyle {...props} hoverColor={hoverColor}>{children}</ButtonStyle>
     </ContainerButton>
   )
 }
@@ -23,7 +24,7 @@ const ButtonStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: white;//#1ec2ac;
+    background-color: ${props => props?.style?.backgroundColor || "white"} ;//#1ec2ac;
     width: auto;
     min-width: 150px;
     border-radius: 50px;
@@ -35,7 +36,7 @@ const ButtonStyle = styled.div`
     }
 
     &:hover{
-        background-color: #dbdbdb;//#1bac98;
+        background-color: ${props=> props?.hoverColor || "#dbdbdb"}; //#dbdbdb;}//#1bac98;
         cursor: pointer;
     }
 

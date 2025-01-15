@@ -50,7 +50,8 @@ const TelaAdicionarCategoria = (props) => {
             
 
             <ConjuntoBotoes>
-                <Icone>
+                <Button>
+                    <p>Novo título</p>
                     <ion-icon
                         onClick={() => {
                             let copia = [...inputCategoria]
@@ -58,9 +59,10 @@ const TelaAdicionarCategoria = (props) => {
                             setInputCategoria([...copia])
                         }}
                         name="add-circle-outline"></ion-icon>
-                </Icone>
+                </Button>
                 <Botoes>
                     <Button
+                        style={{backgroundColor: "#70e11f", color:"white", fontWeight: "bolder" }}
                         onClick={() => {
 
                             let copiaInputs = []
@@ -91,11 +93,11 @@ const TelaAdicionarCategoria = (props) => {
                         Salvar
                     </Button>
 
-                    <Button onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
-                        Cancelar
-                    </Button>
+                      <Button style={{backgroundColor: "#f3493c", color: "white", fontWeight: "bolder"}} hoverColor="#307a8d" onClick={() => setVisibilidadeTelaDeAdicaoDeCategorias(false)}>
+                          Cancelar
+                      </Button>
                 </Botoes>
-            </ConjuntoBotoes>
+            </ConjuntoBotoes> 
         </JanelaEdicao>
 
     )
